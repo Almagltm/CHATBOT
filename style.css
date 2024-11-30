@@ -1,0 +1,465 @@
+
+    /* Sidebar Styling */
+    .sidebar {
+        width: 300px; /* Fixed width for the sidebar */
+        height: 100%; /* Full height of the viewport */
+        background: linear-gradient(135deg, #8B4513, #D2691E); /* Gradient background for the sidebar */
+        color: white; /* Text color in the sidebar */
+        position: fixed; /* Fixed position on the screen */
+        left: -300px; /* Hidden initially off-screen */
+        transition: left 0.4s ease, box-shadow 0.3s ease; /* Smooth transition for visibility */
+        display: flex; /* Flexbox for layout */
+        flex-direction: column; /* Stacks elements vertically */
+        padding: 20px; /* Adds space inside the sidebar */
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4); /* Adds shadow for depth effect */
+        border-top-right-radius: 15px; /* Rounded top-right corner */
+        border-bottom-right-radius: 15px; /* Rounded bottom-right corner */
+    }
+
+    .sidebar.active {
+        left: 0; /* Moves the sidebar into view */
+        box-shadow: 4px 0 15px rgba(0, 0, 0, 0.5); /* Adds a stronger shadow */
+    }
+
+    .sidebar-header {
+        font-size: 26px; /* Larger font size for the header */
+        font-weight: bold; /* Bold text for emphasis */
+        margin-bottom: 20px; /* Space below the header */
+        text-align: center; /* Centers the text */
+        text-transform: uppercase; /* Converts text to uppercase */
+        letter-spacing: 2px; /* Adds space between letters */
+    }
+
+    .sidebar-content {
+        flex: 1; /* Fills the remaining space */
+        overflow-y: auto; /* Enables scrolling if content overflows */
+    }
+
+    .sidebar-section {
+        margin-bottom: 20px; /* Space below each section */
+    }
+
+    .sidebar-section h3 {
+        font-size: 20px; /* Font size for section titles */
+        text-transform: uppercase; /* Converts titles to uppercase */
+        border-bottom: 2px solid rgba(255, 255, 255, 0.5); /* Underline effect */
+        padding-bottom: 5px; /* Space between text and underline */
+        margin-bottom: 10px; /* Space below the title */
+    }
+
+    .sidebar-section ul {
+        list-style: none; /* Removes default list styling */
+        padding: 0; /* Removes padding */
+    }
+
+    .sidebar-section ul li {
+        padding: 8px 10px; /* Adds space inside list items */
+        margin: 5px 0; /* Adds space between items */
+        background: rgba(255, 255, 255, 0.2); /* Light transparent background */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Changes cursor to pointer on hover */
+        transition: background 0.3s ease, transform 0.2s ease; /* Smooth hover effects */
+    }
+
+    .sidebar-section ul li:hover {
+        background: rgba(255, 255, 255, 0.4); /* Lighter background on hover */
+        transform: translateX(5px); /* Moves the item slightly to the right */
+    }
+
+    .toggle-sidebar {
+        position: absolute; /* Positioned relative to its parent */
+        top: 20px; /* Distance from the top */
+        left: 20px; /* Distance from the left */
+        background-color: #CD853F; /* Lighter brown background */
+        border: none; /* Removes border */
+        color: white; /* Text color */
+        padding: 10px 15px; /* Adds space inside the button */
+        border-radius: 5px; /* Rounded corners */
+        cursor: pointer; /* Pointer cursor on hover */
+        z-index: 1000; /* Ensures button appears above other elements */
+        transition: background 0.3s ease, transform 0.3s ease; /* Smooth hover and click effects */
+    }
+
+    .toggle-sidebar:hover {
+        background-color: #B8860B; /* Even lighter brown on hover */
+        transform: scale(1.1); /* Enlarges slightly on hover */
+    }
+
+    /* Footer styling */
+    .footer {
+        margin-top: 20px; /* Space above the footer */
+        font-size: 14px; /* Smaller font size */
+        text-align: center; /* Centers the text */
+        opacity: 0.8; /* Slightly transparent */
+    }
+
+    /* Media query untuk layar kecil */
+@media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
+  .container {
+    padding: 1rem;
+  }
+}
+
+/* Media query untuk layar sangat kecil */
+@media (max-width: 480px) {
+  .container {
+    width: 95%; /* Hampir memenuhi layar */
+  }
+  .sidebar {
+    font-size: 0.8rem; /* Ukuran lebih kecil */
+  }
+}
+
+   /* Container for chatbot and decorations */
+   .chatbot-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+}
+
+/* Decoration elements (circles placed around the chatbot) */
+.decor-left, .decor-right {
+    width: 50px;
+    height: 50px;
+    background-color: #ffd1dc;
+    border-radius: 50%;
+    opacity: 0.8;
+    position: absolute;
+}
+.decor-left {
+    left: -70px;
+    top: 20px;
+}
+.decor-right {
+    right: -70px;
+    bottom: 20px;
+}
+    /* Hidden class used to hide elements */
+    .hidden {
+        display: none;
+    }
+    /* Tab container for opening words and start button */
+    #tabContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+    /* Opening words style (large welcoming text) */
+    .opening-words {
+        font-size: 36px;
+        color: #8B4513;
+        background-color: rgba(255, 248, 240, 0.9);
+        padding: 15px 30px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        text-align: center;
+        max-width: 600px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    /* Keyframe animation for pulse effect */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+        50% {
+            transform: scale(1.1);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+        100% {
+            transform: scale(1);
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+        }
+    }
+
+        /* Style for tabs used in the chatbot */
+        .tab {
+            background-color: #8B4513;
+            color: #fff;
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: none;
+            transition: transform 0.3s, background-color 0.3s;
+        }
+        /* Hover effect for tabs */
+        .tab:hover {
+            background-color: #CD853F;
+            transform: scale(1.1);
+        }
+        /* Chat container where messages will appear */
+        .chat-container {
+            display: none; /* Hide chat initially */
+            width: 100%;
+            max-width: 480px;
+            height: 600px;
+            background-color: rgba(255, 248, 240, 0.9); /* Light beige with transparency */
+            border: 2px solid #8B4513; /* Brown border */
+            border-radius: 25px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: 'Berlin Sans FB', 'Berlin Sans FB';
+            background-image: url('https://media.istockphoto.com/id/1388281684/vector/seamless-dog-pattern-with-paw-prints-bones-hearts-and-balls-cat-foot-texture-pattern-with.jpg?s=612x612&w=0&k=20&c=St1dISSnU7zobbE4y1VWD7hhEnWcUGriSVZ5ocoSYWU=');
+            background-size: cover;
+            background-repeat: repeat;
+            background-attachment: fixed;
+            animation: moveBackground 30s linear infinite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0 0; }
+            100% { background-position: 100% 100%; }
+        }
+
+        .chat-container {
+            width: 200%;
+            max-width: 420px;
+            height: 600px;
+            background-color: rgba(255, 248, 240, 0.9); /* Light beige with transparency */
+            border: 2px solid #8B4513; /* Brown border */
+            border-radius: 25px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        /* Header for the chat container */
+        .chat-header {
+            background-color: #CD853F; /* Safari-themed sandy color */
+            color: #fff;
+            padding: 15px;
+            font-size: 24px;
+            text-align: center;
+            font-weight: bold;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 20px;
+        }
+        /* Output area for chat messages */
+        #chatOutput {
+            flex: 1;
+            padding: 15px;
+            background-color: rgba(255, 255, 240, 0.8); /* Light transparent color */
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            border-bottom: 2px solid #CD853F;
+        }
+        /* Small pastel hearts for extra decoration */   /* Decoration - small hearts around the chat */
+    .heart-left, .heart-right {
+        width: 20px;
+        height: 20px;
+        background-color: #ffc0cb;
+        border-radius: 50% 50% 50% 0;
+        transform: rotate(-45deg);
+        position: absolute;
+        opacity: 0.9;
+    }
+    .heart-left {
+        top: 70px;
+        left: -40px;
+    }
+    .heart-right {
+        bottom: 50px;
+        right: -40px;
+    }
+    .heart-left::before, .heart-right::before {
+        content: "";
+        width: 20px;
+        height: 20px;
+        background-color: #ffc0cb;
+        border-radius: 50% 50% 0 50%;
+        position: absolute;
+    }
+    .heart-left::before {
+        left: 10px;
+        top: -10px;
+    }
+    .heart-right::before {
+        left: -10px;
+        top: -10px;
+    }
+
+    /* Responsive design */
+    @media (max-width: 600px) {
+        .chat-container {
+            width: 100%; /* Full width for smaller screens */
+            height: 400px; /* Reduced height */
+        }
+    }
+        .message {
+            padding: 10px;
+            border-radius: 20px;
+            max-width: 75%;
+            font-size: 19px;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            word-wrap: break-word; /* Forces long words to break */
+            overflow-wrap: anywhere; /* Allows breaking at any point if necessary */
+            max-width: 80%; /* Limit the bubble's width */
+            
+        }
+        /* User message styles - align right */
+        .user-message {
+            background-color: #ffcccb;
+            color: #610c0c;
+            border-radius: 20px 20px 0 20px;
+            margin-left: auto;
+            flex-direction: row-reverse; /* Profile picture appears after text */
+            flex-direction: line;
+            align-self: flex-end;
+        }
+        /* Bot message styles - align left */
+        .bot-message {
+            background-color: #fffacd;
+            color: #8e501d;
+            border-radius: 20px 20px 20px 0;
+            margin-right: auto;
+            flex-direction: line;
+            
+        }
+        /* Profile Picture */
+        .profile-pic {
+            width: 50px;
+            height: 30px;
+            border-radius: 50%;
+            margin: 0 10px;
+            margin-bottom: 5px;
+        }
+        /* Specific sizing for bot profile picture */
+        .bot-message .profile-pic {
+            width: 45px; /* Adjusted width for bot profile picture */
+            height: 45px; /* Adjusted height for bot profile picture */
+        }
+
+        /* Specific sizing for user profile picture */
+        .user-message .profile-pic {
+            width: 30px; /* Smaller width for user profile picture */
+            height: 30px; /* Smaller height for user profile picture */
+        }
+        /* Chat input container */
+        .chat-input-container {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background-color: #fffaf0;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+
+        input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 2px solid #CD853F;
+            border-radius: 25px;
+            margin-right: 10px;
+            font-size: 19px;
+            outline: none;
+        }
+        
+        .reset-chat-btn {
+            position: absolute;
+            top: 1px;
+            right: 2px;
+            background-color: #8B4513;
+            color: white;
+            font-size: 1px;
+            padding: 2px 5px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: auto;    /* Auto width to reduce size */
+            height: auto;   /* Auto height to reduce size */
+        }
+        
+        .reset-chat-btn:hover {
+            background-color: #B8860B;
+        }
+        
+        .chat-container {
+            position: relative; /* Make the container a positioned element */
+        }
+
+
+        /* Paw Button Styling */
+    .paw-button {
+        position: relative; /* Positioned relative to its parent */
+        width: 45px; /* Width of the button */
+        height: 45px; /* Height of the button */
+        background-color: #CD853F; /* Brown background */
+        border: none; /* No border */
+        border-radius: 50%; /* Circular button */
+        cursor: pointer; /* Pointer cursor on hover */
+        display: flex; /* Flexbox for alignment */
+        align-items: center; /* Center-aligns vertically */
+        justify-content: center; /* Center-aligns horizontally */
+        transition: background-color 0.3s; /* Smooth hover effect */
+    }
+
+    .paw-button:hover {
+        background-color: #B8860B; /* Lighter color on hover */
+        transform: scale(1.05); /* Enlarges slightly */
+    }
+
+    .paw-button:active {
+        transform: scale(0.95); /* Shrinks slightly on click */
+    }
+        
+        /* Paw 'toes' */
+        .paw-button .toe {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #341c05;
+            border-radius: 50%;
+        }
+        .toe1 { top: 5px; left: 10px; }
+        .toe2 { top: 5px; right: 10px; }
+        .toe3 { top: -5px; left: 18px; }
+        .toe4 { top: -5px; right: 18px; }
+        
+
+        .reset-chat-btn {
+            position: absolute;
+            top: 15px;       /* Positioned a bit lower from the top */
+            right: 15px;     /* Positioned a bit inset from the right */
+            background-color: #8B4513;
+            color: white;
+            font-size: 12px;
+            width: 30px;     /* Small width for a circular shape */
+            height: 30px;    /* Small height for a circular shape */
+            border-radius: 50%; /* Makes the button circular */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border: none;
+            transition: background-color 0.3s;
+        }
+        
+        .reset-chat-btn:hover {
+            background-color: #B8860B;
+        }
+  
